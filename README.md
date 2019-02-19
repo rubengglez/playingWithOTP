@@ -1,6 +1,7 @@
 # Stack
 
-**TODO: Add description**
+This project is used to test the OTP environment, to know features and
+to explore his tools.
 
 ## Installation
 
