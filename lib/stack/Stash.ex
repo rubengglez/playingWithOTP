@@ -3,7 +3,7 @@ defmodule Stack.Stash do
   use GenServer
 
   def start_link(initState) do
-    GenServer.start_link(__MODULE__, [2], name: __MODULE__, debug: [:trace])
+    GenServer.start_link(__MODULE__, initState, name: __MODULE__, debug: [:trace])
   end
 
   def get_value do

@@ -5,7 +5,7 @@ defmodule Stack.Application do
 
   use Application
 
-  def start(_type, _args) do
+  def start(_type, state) do
     # List all child processes to be supervised
     children = [
       # Starts a worker by calling: StackSup.Worker.start_link(arg)
@@ -13,7 +13,7 @@ defmodule Stack.Application do
       # Stack.start_link([])
       %{
         id: Stack.Supervisor,
-        start: {Stack.Supervisor, :start_link, [[]]}
+        start: {Stack.Supervisor, :start_link, state}
       }
     ]
 

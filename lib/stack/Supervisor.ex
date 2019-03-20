@@ -3,15 +3,15 @@ defmodule Stack.Supervisor do
 
   def start_link(init_arg) do
     result = {:ok, pid} = Supervisor.start_link(__MODULE__, init_arg, name: __MODULE__)
-    start_workers(pid)
+    start_workers(pid, init_arg)
     result
   end
 
-  def start_workers(pid) do
+  def start_workers(pid, init_arg) do
     {:ok, pidStash} =
       Supervisor.start_child(pid, %{
         id: Stack.Stash,
-        start: {Stack.Stash, :start_link, [[]]}
+        start: {Stack.Stash, :start_link, [init_arg]}
       })
 
     {:ok, pidServer} =
