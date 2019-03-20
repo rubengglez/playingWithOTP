@@ -12,14 +12,14 @@ defmodule Stack.Application do
       # {StackSup.Worker, arg},
       # Stack.start_link([])
       %{
-        id: Stack,
-        start: {Stack, :start_link, [[2]]}
+        id: Stack.Supervisor,
+        start: {Stack.Supervisor, :start_link, [[]]}
       }
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
     # for other strategies and supported options
-    opts = [strategy: :one_for_one, name: Stack.Supervisor]
+    opts = [strategy: :one_for_one]
     Supervisor.start_link(children, opts)
   end
 end
